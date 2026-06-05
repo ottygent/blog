@@ -9,7 +9,9 @@ type Props = {
 };
 
 function matchesTutorial(tutorial: TutorialSummary, query: string) {
-  const haystack = [tutorial.title, tutorial.description, tutorial.slug, ...tutorial.headings].join(" ").toLowerCase();
+  const haystack = [tutorial.title, tutorial.description, tutorial.slug, ...tutorial.headings.map((heading) => heading.text)]
+    .join(" ")
+    .toLowerCase();
   return haystack.includes(query.toLowerCase());
 }
 
@@ -76,7 +78,7 @@ export function TutorialExplorer({ tutorials }: Props) {
             {tutorial.headings.length > 0 && (
               <ul className="miniToc">
                 {tutorial.headings.slice(0, 3).map((heading) => (
-                  <li key={heading}>{heading}</li>
+                  <li key={heading.id}>{heading.text}</li>
                 ))}
               </ul>
             )}

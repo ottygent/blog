@@ -40,7 +40,9 @@ export default async function TutorialPage({ params }: { params: Promise<{ slug:
             <strong>On this page</strong>
             <ul>
               {tutorial.headings.map((heading) => (
-                <li key={heading}>{heading}</li>
+                <li key={heading.id}>
+                  <a href={`#${heading.id}`}>{heading.text}</a>
+                </li>
               ))}
             </ul>
           </aside>

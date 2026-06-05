@@ -315,6 +315,19 @@ a { color: inherit; }
   line-height: 1.55;
 }
 
+.toc a {
+  color: var(--muted);
+  text-decoration: none;
+  transition: color 160ms ease, opacity 160ms ease;
+}
+
+.toc a:hover,
+.toc a:focus-visible {
+  color: var(--accent);
+  opacity: 1;
+  outline: none;
+}
+
 .markdownBody {
   min-width: 0;
   color: #eef1ff;

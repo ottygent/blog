@@ -9,8 +9,13 @@ export type Tutorial = {
   description: string;
   readingMinutes: number;
   wordCount: number;
-  headings: string[];
+  headings: TutorialHeading[];
   html: string;
+};
+
+export type TutorialHeading = {
+  id: string;
+  text: string;
 };
 
 export type TutorialSummary = Omit<Tutorial, "html">;
@@ -56,7 +61,7 @@ function inlineMarkdown(value: string) {
   return html;
 }
 
-function headingId(text: string) {
+export function headingId(text: string) {
   return text
     .toLowerCase()
     .replace(/<[^>]+>/g, "")
@@ -180,7 +185,10 @@ function tutorialFromFile(filename: string): Tutorial {
   const markdown = fs.readFileSync(path.join(tutorialsDirectory, filename), "utf8");
   const title = titleFromMarkdown(markdown, slug);
   const wordCount = markdown.split(/\s+/).filter(Boolean).length;
-  const headings = Array.from(markdown.matchAll(/^##\s+(.+)$/gm)).map((match) => match[1].trim()).slice(0, 8);
+  const headings = Array.from(markdown.matchAll(/^##\s+(.+)$/gm))
+    .map((match) => match[1].trim())
+    .slice(0, 8)
+    .map((text) => ({ id: headingId(text), text }));
 
   return {
     slug,
