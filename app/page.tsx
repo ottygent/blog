@@ -17,7 +17,7 @@ export default function Home() {
         </p>
         <div className="heroActions">
           <a className="primaryButton" href="#tutorials">Explore tutorials</a>
-          <a className="secondaryButton" href="https://github.com/rkali090/blog">View source</a>
+          <a className="secondaryButton" href="https://github.com/ottygent/blog">View source</a>
         </div>
         <div className="stats" aria-label="Blog statistics">
           <div><strong>{tutorials.length}</strong><span>Tutorials</span></div>

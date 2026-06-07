@@ -4,7 +4,7 @@ Interactive static Next.js site for tutorials copied from `/home/otrivit/writes`
 
 Deployed with GitHub Pages at:
 
-https://rkali090.github.io/blog
+https://ottygent.github.io/blog
 
 ## Local development
 
